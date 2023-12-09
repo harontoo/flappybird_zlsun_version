@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../../../Source">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Source" type="native-Source-root" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../app/jni">
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/jni" type="native-Source-root" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../engines/axmol/core">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../engines/axmol/core" type="native-Source-root" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../engines/axmol/extensions">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../engines/axmol/extensions" type="native-Source-root" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../engines/axmol/thirdparty">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../engines/axmol/thirdparty" type="native-Source-root" />
+    </content>
+  </component>
+</module>
