@@ -32,6 +32,8 @@
 #    include "audio/AudioEngine.h"
 #endif
 
+#include "Path.h"
+
 USING_NS_AX;
 
 //Scale value to create appropriate window size for the engine
@@ -102,6 +104,9 @@ bool AppDelegate::applicationDidFinishLaunching()
                                             smallResolutionSize.width / designResolutionSize.width));
     }
 
+    //preload sfx
+    preloadSfx();
+
     // create a scene. it's an autorelease object
     auto scene = utils::createInstance<HelloWorld>();
 
@@ -129,4 +134,13 @@ void AppDelegate::applicationWillEnterForeground()
 #if USE_AUDIO_ENGINE
     AudioEngine::resumeAll();
 #endif
+}
+
+void AppDelegate::preloadSfx()
+{
+    AudioEngine::preload(SFX_DIE);
+    AudioEngine::preload(SFX_HIT);
+    AudioEngine::preload(SFX_POINT);
+    AudioEngine::preload(SFX_SWOOSHING);
+    AudioEngine::preload(SFX_WING);
 }

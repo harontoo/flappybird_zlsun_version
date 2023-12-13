@@ -59,6 +59,9 @@ public:
     @param  the pointer of the application
     */
     void applicationWillEnterForeground() override;
+
+    //Preload audio files 
+    void preloadSfx();
 };
 
 #endif  // _APP_DELEGATE_H_

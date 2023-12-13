@@ -24,6 +24,8 @@
  ****************************************************************************/
 
 #include "HelloWorldScene.h"
+#include "Path.h"
+#include "AudioEngine.h"
 
 USING_NS_AX;
 
@@ -92,10 +94,10 @@ bool HelloWorld::init()
     //mouseListener->onMouseScroll = AX_CALLBACK_1(HelloWorld::onMouseScroll, this);
     //_eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
 
-    //auto keyboardListener           = EventListenerKeyboard::create();
-    //keyboardListener->onKeyPressed  = AX_CALLBACK_2(HelloWorld::onKeyPressed, this);
-    //keyboardListener->onKeyReleased = AX_CALLBACK_2(HelloWorld::onKeyReleased, this);
-    //_eventDispatcher->addEventListenerWithFixedPriority(keyboardListener, 11);
+    auto keyboardListener           = EventListenerKeyboard::create();
+    keyboardListener->onKeyPressed  = AX_CALLBACK_2(HelloWorld::onKeyPressed, this);
+    keyboardListener->onKeyReleased = AX_CALLBACK_2(HelloWorld::onKeyReleased, this);
+    _eventDispatcher->addEventListenerWithFixedPriority(keyboardListener, 11);
 
 
 
@@ -149,6 +151,7 @@ void HelloWorld::onTouchesBegan(const std::vector<ax::Touch*>& touches, ax::Even
     {
         AXLOG("onTouchesBegan detected, X:%f  Y:%f", t->getLocation().x, t->getLocation().y);
     }
+    ax::AudioEngine::play2d(SFX_SWOOSHING);
 }
 
 void HelloWorld::onTouchesMoved(const std::vector<ax::Touch*>& touches, ax::Event* event)
@@ -194,11 +197,13 @@ void HelloWorld::onMouseScroll(Event* event)
 void HelloWorld::onKeyPressed(EventKeyboard::KeyCode code, Event* event)
 {
     AXLOG("onKeyPressed, keycode: %d", static_cast<int>(code));
+    ax::AudioEngine::play2d(SFX_HIT);
 }
 
 void HelloWorld::onKeyReleased(EventKeyboard::KeyCode code, Event* event)
 {
     AXLOG("onKeyReleased, keycode: %d", static_cast<int>(code));
+    ax::AudioEngine::play2d(SFX_POINT);
 }
 
 void HelloWorld::update(float delta)
