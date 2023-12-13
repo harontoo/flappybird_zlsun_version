@@ -34,10 +34,13 @@
 
 USING_NS_AX;
 
-static ax::Size designResolutionSize = ax::Size(720, 1280);
-static ax::Size smallResolutionSize = ax::Size(320, 480);
-static ax::Size mediumResolutionSize = ax::Size(768, 1024);
-static ax::Size largeResolutionSize = ax::Size(1536, 2048);
+//Scale value to create appropriate window size for the engine
+#define SCALE_VAL .6
+
+static ax::Size designResolutionSize = ax::Size(720*SCALE_VAL, 1280*SCALE_VAL);
+static ax::Size smallResolutionSize = ax::Size(320*SCALE_VAL, 480*SCALE_VAL);
+static ax::Size mediumResolutionSize = ax::Size(768*SCALE_VAL, 1024*SCALE_VAL);
+static ax::Size largeResolutionSize = ax::Size(1536*SCALE_VAL, 2048*SCALE_VAL);
 
 AppDelegate::AppDelegate() {}
 
