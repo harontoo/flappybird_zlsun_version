@@ -1,0 +1,68 @@
+#pragma once
+
+//Top level folders
+#define FONTS_DIR "fonts/"
+#define AUDIO_DIR "audio/"
+#define IMAGES_DIR "images/"
+
+//Font specific file resources
+//FNT
+#define FNT_FONT FONTS_DIR"font.fnt"
+#define FNT_SCORE FONTS_DIR"number_score.fnt"
+
+//Audio specific file resources
+#define SFX_DIE        AUDIO_DIR"sfx_die.ogg"
+#define SFX_HIT        AUDIO_DIR"sfx_hit.ogg"
+#define SFX_POINT      AUDIO_DIR"sfx_point.ogg"
+#define SFX_SWOOSHING  AUDIO_DIR"sfx_swooshing.ogg"
+#define SFX_WING       AUDIO_DIR"sfx_wing.ogg"
+
+//Image specific file resources
+#define IMG_BG_DAY             IMAGES_DIR"bg_day.png"
+#define IMG_BG_NIGHT           IMAGES_DIR"bg_night.png"
+#define IMG_BIRD0_0            IMAGES_DIR"bird0_0.png"
+#define IMG_BIRD0_1            IMAGES_DIR"bird0_1.png"
+#define IMG_BIRD0_2            IMAGES_DIR"bird0_2.png"
+#define IMG_BIRD1_0            IMAGES_DIR"bird1_0.png"
+#define IMG_BIRD1_1            IMAGES_DIR"bird1_1.png"
+#define IMG_BIRD1_2            IMAGES_DIR"bird1_2.png"
+#define IMG_BIRD2_0            IMAGES_DIR"bird2_0.png"
+#define IMG_BIRD2_1            IMAGES_DIR"bird2_1.png"
+#define IMG_BIRD2_2            IMAGES_DIR"bird2_2.png"
+#define IMG_BLACK              IMAGES_DIR"black.png"
+#define IMG_BLINK_00           IMAGES_DIR"blink_00.png"
+#define IMG_BLINK_01           IMAGES_DIR"blink_01.png"
+#define IMG_BLINK_02           IMAGES_DIR"blink_02.png"
+#define IMG_BRAND_COPYRIGHT    IMAGES_DIR"brand_copyright.png"
+#define IMG_BUTTON_MENU        IMAGES_DIR"button_menu.png"
+#define IMG_BUTTON_OK          IMAGES_DIR"button_ok.png"
+#define IMG_BUTTON_PAUSE       IMAGES_DIR"button_pause.png"
+#define IMG_BUTTON_PLAY        IMAGES_DIR"button_play.png"
+#define IMG_BUTTON_RATE        IMAGES_DIR"button_rate.png"
+#define IMG_BUTTON_RESUME      IMAGES_DIR"button_resume.png"
+#define IMG_BUTTON_SCORE       IMAGES_DIR"button_score.png"
+#define IMG_BUTTON_SHARE       IMAGES_DIR"button_share.png"
+#define IMG_CLOSE_BTN          IMAGES_DIR"close_btn.png"
+#define IMG_CLOSE_BTN_PRESSED  IMAGES_DIR"close_btn_pressed.png"
+#define IMG_GAMEOVER           IMAGES_DIR"gameover.png"
+#define IMG_LAND               IMAGES_DIR"land.png"
+#define IMG_LOGO               IMAGES_DIR"logo.png"
+#define IMG_MEDALS_0           IMAGES_DIR"medals_0.png"
+#define IMG_MEDALS_1           IMAGES_DIR"medals_1.png"
+#define IMG_MEDALS_2           IMAGES_DIR"medals_2.png"
+#define IMG_MEDALS_3           IMAGES_DIR"medals_3.png"
+#define IMG_NEW                IMAGES_DIR"new.png"
+#define IMG_PIPE2_DOWN         IMAGES_DIR"pipe2_down.png"
+#define IMG_PIPE2_UP           IMAGES_DIR"pipe2_up.png"
+#define IMG_PIPE_DOWN          IMAGES_DIR"pipe_down.png"
+#define IMG_PIPE_UP            IMAGES_DIR"pipe_up.png"
+#define IMG_SCORE_PANEL        IMAGES_DIR"score_panel.png"
+#define IMG_START_BTN          IMAGES_DIR"start_btn.png"
+#define IMG_START_BTN_PRESSED  IMAGES_DIR"start_btn_pressed.png"
+#define IMG_TEXT_GAME_OVER     IMAGES_DIR"text_game_over.png"
+#define IMG_TEXT_READY         IMAGES_DIR"text_ready.png"
+#define IMG_TITLE              IMAGES_DIR"title.png"
+#define IMG_TUTORIAL           IMAGES_DIR"tutorial.png"
+#define IMG_WHITE              IMAGES_DIR"white.png"
+
+
