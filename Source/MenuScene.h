@@ -2,6 +2,7 @@
 
 #include "axmol.h"
 
+
 class MenuScene : public ax::Layer
 {
 public:

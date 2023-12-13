@@ -24,7 +24,7 @@
  ****************************************************************************/
 
 #include "HelloWorldScene.h"
-#include "Path.h"
+#include "Paths.h"
 #include "AudioEngine.h"
 
 USING_NS_AX;

@@ -24,7 +24,9 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
+
 #include "HelloWorldScene.h"
+#include "MenuScene.h"
 
 #define USE_AUDIO_ENGINE 1
 
@@ -32,18 +34,19 @@
 #    include "audio/AudioEngine.h"
 #endif
 
-#include "Path.h"
+#include "Paths.h"
 
 USING_NS_AX;
 
 //Scale value to create appropriate window size for the engine
 #define SCALE_VAL .6
 
+/*
 static ax::Size designResolutionSize = ax::Size(720*SCALE_VAL, 1280*SCALE_VAL);
 static ax::Size smallResolutionSize = ax::Size(320*SCALE_VAL, 480*SCALE_VAL);
 static ax::Size mediumResolutionSize = ax::Size(768*SCALE_VAL, 1024*SCALE_VAL);
 static ax::Size largeResolutionSize = ax::Size(1536*SCALE_VAL, 2048*SCALE_VAL);
-
+*/
 AppDelegate::AppDelegate() {}
 
 AppDelegate::~AppDelegate() {}
@@ -67,8 +70,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
 #if (AX_TARGET_PLATFORM == AX_PLATFORM_WIN32) || (AX_TARGET_PLATFORM == AX_PLATFORM_MAC) || \
     (AX_TARGET_PLATFORM == AX_PLATFORM_LINUX)
-        glView = GLViewImpl::createWithRect(
-            "flappybird_1", ax::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glView = GLViewImpl::create("flappybird_1");
 #else
         glView = GLViewImpl::create("flappybird_1");
 #endif
@@ -81,6 +83,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
 
+    /*
     // Set the design resolution
     glView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height,
                                     ResolutionPolicy::SHOW_ALL);
@@ -103,12 +106,18 @@ bool AppDelegate::applicationDidFinishLaunching()
         director->setContentScaleFactor(MIN(smallResolutionSize.height / designResolutionSize.height,
                                             smallResolutionSize.width / designResolutionSize.width));
     }
-
+    */
+    //Fixed frame size
+    glView->setFrameSize(360, 640);
+    glView->setDesignResolutionSize(288, 512, ResolutionPolicy::NO_BORDER);
     //preload sfx
     preloadSfx();
 
     // create a scene. it's an autorelease object
-    auto scene = utils::createInstance<HelloWorld>();
+    //auto scene = utils::createInstance<HelloWorld>();
+
+    auto scene = MenuScene::createScene();
+
 
     // run
     director->runWithScene(scene);
