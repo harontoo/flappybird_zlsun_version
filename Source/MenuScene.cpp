@@ -1,6 +1,7 @@
 #include "MenuScene.h"
 #include "GameScene.h"
 #include "GameLayer.h"
+#include "Bird.h"
 #include "Paths.h"
 
 ax::Scene* MenuScene::createScene()
@@ -29,10 +30,14 @@ bool MenuScene::init()
 	auto mid_width = visibleSize.width / 2;
 
 	//Bird
+	auto bird = ax::utils::makeInstance<Bird>();
+	bird->setPosition(mid_width, visibleSize.height * 0.6);
+	addChild(bird, 1);
 
+	AXLOG("Bird position x:%f\nposition y:%f", bird->getPositionX(), bird->getPositionY());
 	//Logo setup
 	auto logo = ax::Sprite::create(IMG_LOGO);
-	logo->setPosition(mid_width, visibleSize.height * 0.6);
+	logo->setPosition(mid_width, visibleSize.height * 0.8);
 	addChild(logo, 2);
 
 	
