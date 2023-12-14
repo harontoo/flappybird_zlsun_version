@@ -1,5 +1,6 @@
 #include "GameLayer.h"
 #include "Paths.h"
+#include "AudioEngine.h"
 
 GameLayer::GameLayer()
     : speed(150)
@@ -30,7 +31,7 @@ bool GameLayer::init() {
     addChild(bg, 0);
 
     //Set land properties
-    auto land = ax::Sprite::create(IMG_LAND);
+    land = ax::Sprite::create(IMG_LAND);
     /*auto draw_node = ax::DrawNode::create();
     draw_node->setPosition(land->getAnchorPoint());
     draw_node->drawRect(land->getAnchorPoint(), land->getContentSize(), ax::Color4F::RED);
@@ -57,4 +58,62 @@ bool GameLayer::init() {
 
     return true;
 }
+void GameLayer::addPipes()
+{
+    for (int i = 0; i < 3; ++i) {
+        auto pipe = ax::utils::createInstance<Pipe>();
+        pipe->setPositionX(300 + visibleSize.width + pipe_distance * i);
+        pipe->setRandomPositionY();
+        addChild(pipe);
+        pipes.push_back(pipe);
+    }
+}
 
+void GameLayer::update(float dt)
+{
+    for (size_t i = 0; i < pipes.size(); ++i) {
+        auto pipe = pipes[i];
+        if (pipe->getPositionX() < -pipe_width) {
+            auto prePipe = pipes[i == 0 ? pipes.size() - 1 : i - 1];
+            pipe->setPositionX(prePipe->getPositionX() + pipe_distance);
+            pipe->setRandomPositionY();
+        }
+    }
+    for (auto pipe : pipes) {
+        float oldX = pipe->getPositionX();
+        float x = oldX - dt * speed;
+        if (x <= point_x && point_x < oldX) {
+            ++score;
+           ax::AudioEngine::play2d(SFX_POINT);
+
+        }
+        pipe->setPositionX(x);
+    }
+}
+
+bool GameLayer::hitGround(Bird* bird)
+{
+    return bird->getBoundingBox().getMinY() + 20 < land->getContentSize().height;
+
+}
+
+bool GameLayer::checkCollision(Bird* bird)
+{
+    for (auto pipe : pipes) {
+        if (pipe->checkCollision(bird)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void GameLayer::stop()
+{
+    land->stopAllActions();
+
+}
+
+int GameLayer::getScore()
+{
+    return score;
+}

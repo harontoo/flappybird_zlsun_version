@@ -60,20 +60,29 @@ void Bird::update(float dt)
 }
 
 void Bird::flyUp() {
-
+	velocity = -360.0f;
+	if (state != State::FlyingUp) {
+		if (state == State::Falling) {
+			stopAction(fallAnimation);
+		}
+		runAction(flyAnimation);
+		state = State::FlyingUp;
+	}
 }
 
 
 
-void Bird::fallDown() {
 
-}
 
 void Bird::fall() {
-
+	if (state == State::FlyingUp) {
+		stopAction(flyAnimation);
+		runAction(fallAnimation);
+		state = State::Falling;
+	}
 }
 
 
 void Bird::die() {
-
+	stopAllActions();
 }

@@ -10,7 +10,6 @@ public:
 
 	void update(float dt);
 	void flyUp();
-	void fallDown();
 	void fall();
 	void die();
 

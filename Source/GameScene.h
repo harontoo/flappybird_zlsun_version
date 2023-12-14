@@ -12,7 +12,7 @@ public:
 	void startPlaying();
 	void gameOver();
 
-	//void update(float dt);
+	void update(float dt);
 	void updateScore();
 
 	int readRecord();
@@ -30,5 +30,6 @@ private:
 	ax::Node* tutorialNode;
 	GameLayer* gameLayer;
 	Bird* bird;
+
 
 };

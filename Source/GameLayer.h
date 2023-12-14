@@ -1,5 +1,7 @@
 #pragma once
 #include "axmol.h"
+#include "Bird.h";
+#include "Pipe.h"
 
 class GameLayer : public ax::Layer {
 
@@ -9,9 +11,9 @@ public:
 	bool init();
 
 	void addPipes();
-	//void update(float dt);
-	//bool checkCollision(Bird* bird);
-	//bool hitGround(Bird* bird);
+	void update(float dt);
+	bool checkCollision(Bird* bird);
+	bool hitGround(Bird* bird);
 	void stop();
 	int getScore();
 
@@ -24,6 +26,6 @@ private:
 	ax::Point origin;
 	float point_x;
 	ax::Sprite* land;
-	//std::vector<Pipe*> pipes;
+	std::vector<Pipe*> pipes;
 
 };
