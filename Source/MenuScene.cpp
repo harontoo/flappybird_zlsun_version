@@ -1,3 +1,4 @@
+#include "AudioEngine.h"
 #include "MenuScene.h"
 #include "GameScene.h"
 #include "GameLayer.h"
@@ -43,7 +44,7 @@ bool MenuScene::init()
 	
 	//MainMenu options setup
 	//menu option start
-	auto menu_option_start = ax::MenuItemSprite::create(ax::Sprite::create(IMG_START_BTN), ax::Sprite::create(IMG_START_BTN_PRESSED), nullptr, MenuScene::endGame);
+	auto menu_option_start = ax::MenuItemSprite::create(ax::Sprite::create(IMG_START_BTN), ax::Sprite::create(IMG_START_BTN_PRESSED), nullptr, MenuScene::startGame);
 	//menu option close
 	auto menu_option_close = ax::MenuItemSprite::create(ax::Sprite::create(IMG_CLOSE_BTN), ax::Sprite::create(IMG_CLOSE_BTN_PRESSED), nullptr, MenuScene::endGame);
 	//menu container
@@ -64,6 +65,8 @@ bool MenuScene::init()
 
 void MenuScene::endGame(ax::Ref* sender)
 {
+	ax::AudioEngine::end();
+	ax::Director::getInstance()->end();
 
 }
 
