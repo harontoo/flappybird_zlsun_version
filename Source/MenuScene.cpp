@@ -59,7 +59,11 @@ bool MenuScene::init()
 
  void MenuScene::startGame(ax::Ref* sender)
 {
+	 auto gameScene = GameScene::createScene();
+	 auto transition = ax::TransitionFade::create(1.0f, gameScene, ax::Color3B(0, 0, 0));
+	 ax::Director::getInstance()->replaceScene(transition);
 
+	 ax::AudioEngine::play2d(SFX_SWOOSHING);
 }
 
 
