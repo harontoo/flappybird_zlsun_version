@@ -35,6 +35,18 @@ bool MenuScene::init()
 	logo->setPosition(mid_width, visibleSize.height * 0.6);
 	addChild(logo, 2);
 
+	
+	//MainMenu options setup
+	//menu option start
+	auto menu_option_start = ax::MenuItemSprite::create(ax::Sprite::create(IMG_START_BTN), ax::Sprite::create(IMG_START_BTN_PRESSED), nullptr, MenuScene::endGame);
+	//menu option close
+	auto menu_option_close = ax::MenuItemSprite::create(ax::Sprite::create(IMG_CLOSE_BTN), ax::Sprite::create(IMG_CLOSE_BTN_PRESSED), nullptr, MenuScene::endGame);
+	//menu container
+	auto menu_container = ax::Menu::create(menu_option_start,menu_option_close,nullptr);
+	menu_container->alignItemsHorizontally();
+	menu_container->setPosition(mid_width, visibleSize.height * 0.4);
+
+	addChild(menu_container, 3);
 
 	return true;
 }
