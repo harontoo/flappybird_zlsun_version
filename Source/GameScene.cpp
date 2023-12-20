@@ -90,9 +90,13 @@ bool GameScene::onTouchBegan(ax::Touch* touch, ax::Event* event)
 
 void GameScene::startPlaying()
 {
+	//hides the tutorial node
 	tutorialNode->setVisible(false);
+	//start adding pipes to the game
 	gameLayer->addPipes();
+	//run bird's fallAnimation
 	bird->fall();
+	//switch GameScene's state to State::Playing
 	state = State::Playing;
 }
 
@@ -182,6 +186,8 @@ void GameScene::update(float dt)
 			state = State::Falling;
 		}
 		else if (gameLayer->hitGround(bird)) {
+	
+
 			ax::AudioEngine::play2d(SFX_DIE);
 			gameLayer->stop();
 			bird->die();
