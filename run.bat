@@ -10,7 +10,7 @@ echo Entering run.bat directory: %myDir%
 
 cd /d %myDir%
 
-set APP_NAME=flappybird_1
+set APP_NAME=flappybird_zlsun_version
 set BUILD_DIR=out/build/x64-Debug
 set BUILD_CFG=%1
 

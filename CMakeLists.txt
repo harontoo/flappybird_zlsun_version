@@ -1,6 +1,6 @@
 #/****************************************************************************
 # Copyright (c) 2013-2014 cocos2d-x.org
-# Copyright (c) 2021-2022 Bytedance Inc.
+# Copyright (c) 2019-present Axmol Engine contributors (see AUTHORS.md).
 #
 # https://axmolengine.github.io/
 #
@@ -25,11 +25,11 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-set(APP_NAME flappybird_1)
+set(APP_NAME flappybird_zlsun_version)
 
 project(${APP_NAME})
 
-if(NOT DEFINED BUILD_ENGINE_DONE) # to test flappybird_1 into root project
+if(NOT DEFINED BUILD_ENGINE_DONE) # to test flappybird_zlsun_version into root project
     if(XCODE)
         set(CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY TRUE)
     endif()
@@ -64,10 +64,10 @@ endif()
 
 # The common cross-platforms source files and header files
 file(GLOB_RECURSE GAME_HEADER
-    Source/*.h
+    Source/*.h Source/*.hpp
     )
 file(GLOB_RECURSE GAME_SOURCE
-    Source/*.cpp
+    Source/*.cpp Source/*.c
     )
 
 set(GAME_INC_DIRS
@@ -186,7 +186,7 @@ ax_setup_app_config(${APP_NAME})
 if(APPLE)
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
     set_xcode_property(${APP_NAME} INSTALL_PATH "\$(LOCAL_APPS_DIR)")
-    set_xcode_property(${APP_NAME} PRODUCT_BUNDLE_IDENTIFIER "com.htsoftwarelabs.hellocpp")
+    set_xcode_property(${APP_NAME} PRODUCT_BUNDLE_IDENTIFIER "com.htsoftwarelabs.flappybird_zlsun_version")
 
     if(MACOSX)
         set_target_properties(${APP_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist")

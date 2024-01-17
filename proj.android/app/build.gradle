@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply from: project(':libaxmol').projectDir.toString() + "/axutils.gradle"
 
 android {
-    namespace "com.htsoftwarelabs.hellocpp"
+    namespace "com.htsoftwarelabs.flappybird_zlsun_version"
     compileSdk PROP_COMPILE_SDK_VERSION.toInteger()
 
     // Setup native build tools: ndk & cmake
@@ -15,7 +15,7 @@ android {
     def cmakeOptions = Eval.me(nbtInfo[3])
 
     defaultConfig {
-        applicationId "com.htsoftwarelabs.hellocpp"
+        applicationId "com.htsoftwarelabs.flappybird_zlsun_version"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 1
@@ -86,33 +86,19 @@ android {
     }
 }
 
-android.applicationVariants.all { variant ->
-    def targetName = variant.name.capitalize()
-
-    def copyContentToAssets = "copy${targetName}ContentToAssets"
-    tasks.register(copyContentToAssets) {
-        doFirst {
-            delete "${projectDir}/build/assets"
-        }
-        doLast {
-            copy {
-                from "${projectDir}/../../Content"
-                into "${projectDir}/build/assets"
-                exclude "**/*.gz"
-            }
-        }
+tasks.register("copyContentToAssets") {
+    doFirst {
+        delete "${projectDir}/build/assets"
     }
-    tasks.getByName("pre${targetName}Build").dependsOn copyContentToAssets
-
-    tasks.register("copy${targetName}AxslcToAssets") {
-        doFirst {
-            delete "${projectDir}/build/assets/axslc"
+    doLast {
+        copy {
+            from "${projectDir}/../../Content"
+            into "${projectDir}/build/assets"
+            exclude "**/*.gz"
         }
-        doLast {
-            copy {
-                from "${projectDir}/build/runtime/axslc"
-                into "${projectDir}/build/assets/axslc"
-            }
+        copy {
+            from "${projectDir}/build/runtime/axslc"
+            into "${projectDir}/build/assets/axslc"
         }
     }
 }
@@ -123,12 +109,11 @@ dependencies {
 }
 
 project.afterEvaluate {
-    if (tasks.findByName("externalNativeBuildDebug")) {
-        copyDebugAxslcToAssets.dependsOn externalNativeBuildDebug
-        compileDebugJavaWithJavac.dependsOn copyDebugAxslcToAssets
-    }
-    if (tasks.findByName("externalNativeBuildRelease")) {
-        copyReleaseAxslcToAssets.dependsOn externalNativeBuildRelease
-        compileReleaseJavaWithJavac.dependsOn copyReleaseAxslcToAssets
+    android.applicationVariants.all { variant ->
+        def variantName = variant.name.capitalize()
+        if (tasks.findByName("externalNativeBuild${variantName}")) {
+            copyContentToAssets.dependsOn tasks.getByName("externalNativeBuild${variantName}")
+            tasks.getByName("compile${variantName}JavaWithJavac").dependsOn copyContentToAssets
+        }
     }
 }

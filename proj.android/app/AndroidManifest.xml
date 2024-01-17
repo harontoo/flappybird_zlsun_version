@@ -13,7 +13,7 @@
         
         <!-- Tell AxmolActivity the name of our .so -->
         <meta-data android:name="android.app.lib_name"
-                   android:value="flappybird_1" />
+                   android:value="flappybird_zlsun_version" />
 
         <activity
             android:name="org.axmol.cpp.AppActivity"
